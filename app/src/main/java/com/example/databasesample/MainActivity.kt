@@ -58,18 +58,6 @@ class MainActivity : AppCompatActivity() {
             tvCocktailName.text = _cocktailName
             val btnSave = findViewById<Button>(R.id.btnSave)
             btnSave.isEnabled = true
-
-            val db = _helper.writableDatabase
-            val sql = "SELECT * FROM cocktailmemos WHERE _id = ${_cocktailId}"
-
-            val cursor = db.rawQuery(sql, null)
-            var note = ""
-            while (cursor.moveToNext()){
-                val idxNote = cursor.getColumnIndex("note")
-                note = cursor.getString(idxNote)
-            }
-            val etNote = findViewById<EditText>(R.id.etNote)
-            etNote.setText(note)
         }
     }
 }
